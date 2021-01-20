@@ -1,5 +1,7 @@
 @extends('layouts.main')
-@section('product')
+@section('title', 'Car details')
+
+@section('content')
 <div class="container">
     <div class="col-12">
         <div
