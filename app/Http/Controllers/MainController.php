@@ -29,8 +29,10 @@ class MainController extends Controller
      **/
     public function product($id)
     {
-        $product = Product::where('id', $id)->get()[0];
+        $product = Product::find($id);
         return view('product-details', ['product' => $product]);
     }
+
+
 
 }
