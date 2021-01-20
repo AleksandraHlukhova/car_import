@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index');
-Route::get('/product/{id}', 'MainController@product');
+Route::get('/', 'MainController@index')->name('index');
+Route::get('/product/{id}', 'MainController@product')->name('product');
