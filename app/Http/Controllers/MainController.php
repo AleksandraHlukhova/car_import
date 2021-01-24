@@ -7,6 +7,17 @@ use App\Product;
 
 class MainController extends Controller
 {
+
+    // /**
+    //  * Create a new controller instance.
+    //  *
+    //  * @return void
+    //  */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+    
     /**
      * show home page
      *
