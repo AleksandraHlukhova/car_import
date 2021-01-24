@@ -15,3 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/product/{id}', 'MainController@product')->name('product');
+
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+    'verify' => false,
+]);
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile/propositions', 'ProfileController@proposition')->name('proposition');
+
+
+Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+
