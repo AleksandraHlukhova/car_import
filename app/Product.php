@@ -20,7 +20,7 @@ class Product extends Model
      */
     public function proposition()
     {
-        return $this->belongsTo('App\Proposition');
+        return $this->belongsTo('App\Proposition','product_id');
     }
 
     /**
@@ -29,5 +29,13 @@ class Product extends Model
     public function order()
     {
         return $this->belongsTo('App\Order');
+    }
+
+    /**
+     * Get bookmark that owns the product.
+     */
+    public function bookmark()
+    {
+        return $this->belongsTo('App\Bookmark', 'product_id');
     }
 }

@@ -23,10 +23,10 @@ class Proposition extends Model
     }
 
     /**
-     * Get user`s products.
+     * Get products.
      */
     public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Product', 'id', 'product_id');
     }
 }
