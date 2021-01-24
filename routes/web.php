@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/product/{id}', 'MainController@product')->name('product');
+Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
 
 Auth::routes([
     'reset' => false,
@@ -23,7 +24,10 @@ Auth::routes([
 ]);
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/profile/propositions', 'ProfileController@proposition')->name('proposition');
+Route::get('/logout', 'ProfileController@logout')->name('logout');
+
+Route::get('/profile/propositions', 'PropositionController@show')->name('proposition.show');
+Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
 
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
