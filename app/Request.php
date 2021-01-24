@@ -14,4 +14,20 @@ class Request extends Model
     protected $fillable = [
         'email', 'phone', 'brand', 'price', 'year_from','year_to'
     ];
+
+    /**
+     * Get user that owns the requests.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    /**
+     * Get user`s propositions.
+     */
+    public function propositions()
+    {
+        return $this->hasMany('App\Proposition');
+    }
 }
