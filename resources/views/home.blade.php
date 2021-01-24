@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Home')
-@section('product')
+@section('content')
 <main role="main">
 
     <section class="text-center mt-4 mb-4">
