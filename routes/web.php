@@ -23,12 +23,13 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
 Route::get('/logout', 'ProfileController@logout')->name('logout');
 
 Route::get('/profile/propositions', 'PropositionController@show')->name('proposition.show');
 Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
 
 
-Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+Route::get('/admin', 'Admin/AdminController@index')->middleware('admin')->name('admin');
+Route::get('/admin-login/', 'Admin/AdminController@index')->name('admin.login');
 
