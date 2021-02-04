@@ -25,8 +25,8 @@ class Proposition extends Model
     /**
      * Get products.
      */
-    public function products()
+    public function product()
     {
-        return $this->hasMany('App\Product', 'id', 'product_id');
+        return $this->hasOne('App\Product', 'id', 'product_id');
     }
 }
