@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RequestSeeder::class);
         $this->call(PropositionSeeder::class);
         $this->call(OrderSeeder::class);
+        $this->call(BookmarkSeeder::class);
     }
 }
