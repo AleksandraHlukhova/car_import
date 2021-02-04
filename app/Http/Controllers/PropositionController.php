@@ -17,7 +17,13 @@ class PropositionController extends Controller
      **/
     public function show()
     {
-        $propositions = Proposition::find(Auth::id())->products;
-        return view('profile', ['products' => $propositions]);
+        $propositions = Proposition::where('id', Auth::id())->get();
+        $products = [];
+        foreach($propositions as $proposition)
+        {
+            $products[] = $proposition->product;
+        }
+
+        return view('profile', ['products' => $products]);
     }
 }
