@@ -56,8 +56,8 @@ class User extends Authenticatable
     /**
      * Get user`s oders.
      */
-    public function oders()
+    public function orders()
     {
-        return $this->hasMany('App\Oder');
+        return $this->hasMany('App\Order');
     }
 }
