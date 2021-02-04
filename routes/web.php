@@ -30,6 +30,7 @@ Route::get('/profile/propositions', 'PropositionController@show')->name('proposi
 Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
 
 
-Route::get('/admin', 'Admin/AdminController@index')->middleware('admin')->name('admin');
-Route::get('/admin-login/', 'Admin/AdminController@index')->name('admin.login');
+Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
+Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customer');
+// Route::get('/admin-login/', 'Admin/AdminController@index')->middleware('admin')->name('admin.login');
 
