@@ -60,11 +60,12 @@ class BookmarkController extends Controller
     public function show()
     {
         $bookmarks = Bookmark::where('user_id', Auth::id())->get();
-        $products;
+        $products = [];
         foreach($bookmarks as $bookmark)
         {
             $products[] = $bookmark->product;
         }
+
         return view('profile', ['products' => $products]);
     }
 }
