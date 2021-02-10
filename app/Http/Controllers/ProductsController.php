@@ -27,11 +27,25 @@ class ProductsController extends Controller
      * @return type
      * @throws conditon
      **/
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        // dd($product);
+        if ($request->isMethod('post')) 
+        {
+            // dd($request['engine_type']);
+            Product::where('id', $id)
+            ->update([
+            "brand" => $request['brand'],
+            "model" => $request['model'],
+            "engine_type" => $request['engine_type'],
+            "transmission" => $request['transmission'],
+            "mileage" => $request['mileage'],
+            "price" => $request['price'],
+          ]);
 
+            $products = Product::all();
+            return view('admin.products', ['products' => $products]);
+        }
         return view('admin.product-details', ['product' => $product]);
     }
 
