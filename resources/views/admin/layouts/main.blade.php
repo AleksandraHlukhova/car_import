@@ -7,6 +7,7 @@
     <meta name="description"
         content="Пример на bootstrap 4: Базовая панель администратора с фиксированной боковой панелью и навигационной панелью. Версия v4.5.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Панель администратора | Dashboard Template for Bootstrap. Версия v4.5</title>
 
     <!-- Bootstrap core CSS -->
