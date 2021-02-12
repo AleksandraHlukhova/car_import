@@ -32,7 +32,9 @@ class ProductsController extends Controller
         // $product = Product::find($id);
         $engine_types = config('car_import.engine_type');
         $transmission = config('car_import.transmission');
-
+        
+        //!!!! add validation and path to photo!!!!/////
+        
         if ($request->isMethod('post')) 
         {
 
