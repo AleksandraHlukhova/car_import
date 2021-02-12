@@ -33,6 +33,8 @@ Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
 Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customer');
 Route::get('/admin/products', 'ProductsController@show')->name('admin.products.show');
+Route::get('/admin/product-create', 'ProductsController@create')->name('admin.product.create');
+Route::post('/admin/product-create', 'ProductsController@create')->name('admin.product.create');
 Route::get('/admin/product-update/{id}', 'ProductsController@update')->name('admin.product.update');
 Route::post('/admin/product-update/{id}', 'ProductsController@update')->name('admin.product.update');
 Route::get('/admin/product-delete/{id}', 'ProductsController@delete')->name('admin.product.delete');
