@@ -15,6 +15,9 @@ return [
     'proposition_status' => [
         'agreed', 'pending', 'rejected'
     ],
+    'paid_status' => [
+        'paid', 'unpaid'
+    ],
     
 
 
