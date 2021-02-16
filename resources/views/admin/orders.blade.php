@@ -30,7 +30,7 @@
                     @csrf
                 </form>
                 <select name="" id="">
-                    @foreach(\App\Order::getPaid_statusAttribute() as $status)
+                    @foreach(config('car_import.paid_status') as $status)
                     <option value="">{{$status}}</option>
                     @endforeach
                 </select>
