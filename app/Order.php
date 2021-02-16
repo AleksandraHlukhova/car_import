@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
     /**
      * Get user that owns the oders.
      */
@@ -19,6 +20,6 @@ class Order extends Model
      */
     public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Product', 'id');
     }
 }
