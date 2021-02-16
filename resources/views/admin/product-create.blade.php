@@ -7,11 +7,11 @@
         <div
             class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <form action="{{ route('admin.product.create') }}" method="POST">
+                <form action="{{ route('admin.product.create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <div class="col-auto d-none d-lg-block">
-                            <img src="" alt="" name="photo">
+                            <img src="" alt=""">
                         </div>
                         <label for="photo">Photo</label>
                         <input type="file" class="form-control" id="photo"  name="photo">
