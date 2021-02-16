@@ -32,7 +32,7 @@ Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
 Route::get('/admin/orders', 'Admin\AdminController@orders')->name('admin.orders');
-Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customer');
+Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customers');
 Route::get('/admin/products', 'ProductsController@show')->name('admin.products.show');
 Route::get('/admin/product-create', 'ProductsController@create')->name('admin.product.create');
 Route::post('/admin/product-create', 'ProductsController@create')->name('admin.product.create');
