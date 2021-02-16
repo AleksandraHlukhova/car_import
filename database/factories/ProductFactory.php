@@ -9,8 +9,8 @@ $factory->define(Product::class, function (Faker $faker) {
     $cars = [
         'Volkswagen' => 'Golf', 'Ford' => 'Focus', 'Nisan'=> 'Primera', 'BMW' => '525', 'Volvo' => 'xc 90'
     ];
-    $engine_type = ['diezel', 'petrol', 'gas'];
-    $transmission = ['mechanical', 'automatic', 'semi-automatic'];
+    $engine_type = config('car_import.engine_type');
+    $transmission = config('car_import.transmission');
     $price = ['2000', '3500', '4000', '10000', '5000'];
 
     $brand = array_rand($cars);
