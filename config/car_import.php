@@ -18,7 +18,9 @@ return [
     'paid_status' => [
         'paid', 'unpaid'
     ],
-    
+    'errors' => [
+        0 => 'Add photo to the product card!'
+    ]
 
 
 ];
