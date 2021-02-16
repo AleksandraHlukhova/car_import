@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 
@@ -34,10 +35,7 @@ class ProductsController extends Controller
         
         if ($request->isMethod('post')) 
         {
-            $file = $request->file('photo');
-            // $file = $request->photo;
-            $path = $request->photo->path();
-            $store = $request->photo->store('images');
+            $path = $request->file('photo')->store('images');
             // dd($path, $store);
             Product::create([
             "brand" => $request['brand'],
@@ -47,15 +45,10 @@ class ProductsController extends Controller
             "transmission" => $request['transmission'],
             "mileage" => $request['mileage'],
             "price" => $request['price'],
-            "photo" => $store
+            "photo" => $path
           ]);
 
-            $products = Product::all();
-            return view('admin.products', [
-                'products' => $products,
-                'engine_types' => $engine_types,
-                'transmission' => $transmission
-            ]);
+            return redirect()->route('admin.products.show');
         }
         return view('admin.product-create', [
             'engine_types' => $engine_types,
@@ -78,6 +71,14 @@ class ProductsController extends Controller
 
         if ($request->isMethod('post')) 
         {
+            if(!$request->hasFile('photo'))
+            {
+                return back()->with(
+                    'error', config('car_import.errors')[0]
+                );
+            }
+            $path = $request->file('photo')->store('images');
+
             Product::where('id', $id)
             ->update([
             "brand" => $request['brand'],
@@ -86,14 +87,10 @@ class ProductsController extends Controller
             "transmission" => $request['transmission'],
             "mileage" => $request['mileage'],
             "price" => $request['price'],
+            "photo" => $path
           ]);
 
-            $products = Product::all();
-            return view('admin.products', [
-                'products' => $products,
-                'engine_types' => $engine_types,
-                'transmission' => $transmission
-            ]);
+            return redirect()->route('admin.products.show');
         }
         return view('admin.product-update', [
             'product' => $product,
@@ -113,19 +110,21 @@ class ProductsController extends Controller
     {
         Product::find($id)->delete();
 
-        $products = Product::all();
-        return view('admin.products', ['products' => $products]);
+        return redirect()->route('admin.products.show');
     }
 
     /**
-     * get extention
+     * gproduct photo delete
      *
      * @param Type $var Description
      * @return type
      * @throws conditon
      **/
-    public function getExtention($file)
+    public function photoDelete($id)
     {
-        
+        $product = Product::find($id);
+        $product->photo = '';
+        $product->save();
+        return redirect()->route('admin.product.update', ['id' => $id]);
     }
 }
