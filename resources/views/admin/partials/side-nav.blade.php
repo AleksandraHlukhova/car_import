@@ -8,13 +8,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.customer') }}">
+                <a class="nav-link" href="{{ route('admin.customers') }}">
                     <span data-feather="users"></span>
                     Customers
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.orders') }}">
                     <span data-feather="file"></span>
                     Orders
                 </a>
@@ -25,7 +25,12 @@
                     Products
                 </a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2"></span>
+                    Requests
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="bar-chart-2"></span>

@@ -31,6 +31,7 @@ Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show
 
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
-Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customer');
+Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customers');
+Route::get('/admin/orders', 'Admin\AdminController@orders')->name('admin.orders');
 // Route::get('/admin-login/', 'Admin/AdminController@index')->middleware('admin')->name('admin.login');
 
