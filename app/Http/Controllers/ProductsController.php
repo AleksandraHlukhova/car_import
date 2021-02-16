@@ -29,19 +29,16 @@ class ProductsController extends Controller
      **/
     public function create(Request $request)
     {
-        // $product = Product::find($id);
         $engine_types = config('car_import.engine_type');
         $transmission = config('car_import.transmission');
         
-        //!!!! add validation and path to photo!!!!/////
-        
         if ($request->isMethod('post')) 
         {
-
-            $file = $request->photo;
+            $file = $request->file('photo');
+            // $file = $request->photo;
             $path = $request->photo->path();
-            dd($path);
-
+            $store = $request->photo->store('images');
+            // dd($path, $store);
             Product::create([
             "brand" => $request['brand'],
             "model" => $request['model'],
@@ -50,7 +47,7 @@ class ProductsController extends Controller
             "transmission" => $request['transmission'],
             "mileage" => $request['mileage'],
             "price" => $request['price'],
-            "photo" => $request['photo']
+            "photo" => $store
           ]);
 
             $products = Product::all();
@@ -118,5 +115,17 @@ class ProductsController extends Controller
 
         $products = Product::all();
         return view('admin.products', ['products' => $products]);
+    }
+
+    /**
+     * get extention
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function getExtention($file)
+    {
+        
     }
 }
