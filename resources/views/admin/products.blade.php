@@ -33,7 +33,7 @@
             <tbody>
                 @forelse ($products as $product)
                     <tr>
-                        <td><img src="{{$product->photo}}" alt=""></td>
+                        <td><img src="{{env('APP_URL') . $product->photo}}" alt="" style="width:350px; height:150px"></td>
                         <td>{{$product->brand}}</td>
                         <td>{{$product->model}}</td>
                         <td>{{$product->year}}</td>
