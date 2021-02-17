@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 
-class OrdersController extends Controller
+class OrderController extends Controller
 {
 
     /**

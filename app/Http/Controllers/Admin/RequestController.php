@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Request as Req;
 
-class RequestsController extends Controller
+class RequestController extends Controller
 {
     /**
      * show requests

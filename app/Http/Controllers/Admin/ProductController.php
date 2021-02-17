@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * show all products in admin
