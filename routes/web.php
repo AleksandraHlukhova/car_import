@@ -31,9 +31,12 @@ Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show
 
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
-Route::get('/admin/orders', 'Admin\AdminController@orders')->name('admin.orders');
+Route::get('/admin/orders', 'Admin\OrdersController@show')->name('admin.orders.show');
 Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customers');
 Route::get('/admin/products', 'Admin\ProductsController@show')->name('admin.products.show');
+Route::get('/admin/requests', 'Admin\RequestsController@show')->name('admin.requests.show');
+Route::get('/admin/propositions/{id}/select', 'PropositionsController@select')->name('admin.proposition.select');
+Route::get('/admin/propositions/{id}/add', 'PropositionsController@add')->name('admin.proposition.add');
 
 ///product crud operations
 Route::get('/admin/product/create', 'Admin\ProductsController@create')->name('admin.product.create');
@@ -42,5 +45,8 @@ Route::get('/admin/product/{id}/update', 'Admin\ProductsController@update')->nam
 Route::post('/admin/product/{id}/update', 'Admin\ProductsController@update')->name('admin.product.update');
 Route::get('/admin/product/{id}/delete', 'Admin\ProductsController@delete')->name('admin.product.delete');
 Route::get('/admin/product/{id}/photo/delete', 'Admin\ProductsController@photoDelete')->name('admin.photo.delete');
+
+Route::post('/admin/order/{id}/paid-status/change', 'Admin\OrdersController@edit')->name('admin.order.paid-status.edit');
+Route::post('/admin/order/{id}/readiness-status/change', 'Admin\OrdersController@edit')->name('admin.order.readiness-status.edit');
 // Route::get('/admin-login/', 'Admin/AdminController@index')->middleware('admin')->name('admin.login');
 
