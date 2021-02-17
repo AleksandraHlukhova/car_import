@@ -3,8 +3,9 @@ Install the App:
 2. Installs dependencies, download vendor folder - composer install 
 3. Create .env file - copy .env.example .env
 4. Generate key in .env file - php artisan key:generate
-5. Create tables and make its seeding -  php artisan migrate:fresh --seed
-6. Start the server - php artisan serve
+5. Make symlink - php artisan storage:link
+6. Create tables and make its seeding -  php artisan migrate:fresh --seed
+7. Start the server - php artisan serve
 
 App has:
 1. Factories and Seeders
@@ -14,10 +15,10 @@ App has:
     2. Products bookmarks
     3. --!! Cart for oders (in processing)
 4. --!! Admin (block in processing):
-    1. Auth
+    1. --!! Auth
     2. Customer list
     3. Customer oders
-    4. Paid orders
-    5. Add new propositions for customer`s apply
+    4. --!! Paid orders
+    5. --!! Add new propositions for customer`s apply
 5. --!! Telegramm notification 
 6. --!! Price calculator
