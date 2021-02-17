@@ -26,7 +26,7 @@ Auth::routes([
 Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
 Route::get('/logout', 'ProfileController@logout')->name('logout');
 
-Route::get('/profile/propositions', 'Admin\PropositionController@show')->name('proposition.show');
+Route::get('/profile/propositions', 'PropositionController@show')->name('proposition.show');
 Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
 
 
@@ -37,6 +37,8 @@ Route::get('/admin/products', 'Admin\ProductController@show')->name('admin.produ
 Route::get('/admin/requests', 'Admin\RequestController@show')->name('admin.requests.show');
 Route::get('/admin/propositions/{id}/select', 'Admin\PropositionController@select')->name('admin.proposition.select');
 Route::get('/admin/propositions/{id}/add', 'Admin\PropositionController@add')->name('admin.proposition.add');
+Route::get('/admin/propositions/{id}/show', 'Admin\PropositionController@show')->name('admin.proposition.show');
+
 
 ///product crud operations
 Route::get('/admin/product/create', 'Admin\ProductController@create')->name('admin.product.create');
