@@ -23,7 +23,7 @@
             </thead>
             <tbody>
                 @forelse ($requests as $request)
-                <tr style="background-color:<?= ($request->status == 0 ? '#f3f3d4' : 'green')?>">
+                <tr class="<?= ($request->status == 0 ? 'bg-danger' : 'bg-success')?>">
                     <td>{{$request->id}}</td>
                     <td>{{$request->user->name}}</td>
                     <td>{{$request->user->lastName}}</td>
@@ -33,7 +33,12 @@
                     <td>{{$request->price}}</td>
                     <td>{{$request->year_from}}</td>
                     <td>{{$request->year_to}}</td>
-                    <td><a href="{{ route('admin.proposition.select', ['id' => $request->id]) }}">Select proposition</a></td>
+                    <td><a href="{{ route('admin.proposition.select', ['id' => $request->id]) }}">Select proposition</a>
+                    @if($request->status)
+                    <a href="{{ route('admin.proposition.show', ['id' => $request->user_id]) }}">See</a>
+                    @endif
+                    </td>
+                    
                 </tr>
                 @empty
                 <p>No users</p>
