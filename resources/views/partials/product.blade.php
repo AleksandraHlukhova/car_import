@@ -1,7 +1,7 @@
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
         <a href="{{ route('product', $product->id) }}" style="display:inline-block">
-            <img src="{{$product->photo}}" alt="" style="position:relative">
+            <img src="{{$product->photo}}" alt="" style="position:relative; max-width:100%">
             <p style="position:absolute; top:0; bottom:0; left:0; right:0; color:white">{{$product->brand}} | {{$product->model}}</p>
         </a>
         <div class="card-body">
