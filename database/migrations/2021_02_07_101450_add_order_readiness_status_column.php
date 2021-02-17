@@ -14,7 +14,7 @@ class AddOrderReadinessStatusColumn extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->enum('readiness_status', ['panding', 'processing', 'done'])->default('panding');
+            $table->enum('readiness_status', config('car_import.readiness_status'))->default('panding');
         });
     }
 
