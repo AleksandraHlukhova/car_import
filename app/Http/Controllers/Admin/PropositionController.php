@@ -18,16 +18,17 @@ class PropositionController extends Controller
      * @return type
      * @throws conditon
      **/
-    public function show()
+    public function show($id)
     {
-        $propositions = Proposition::where('id', Auth::id())->get();
+        $propositions = Proposition::where('user_id', $id)->get();
         $products = [];
         foreach($propositions as $proposition)
         {
             $products[] = $proposition->product;
         }
+        // dd($products);
 
-        return view('profile', ['products' => $products]);
+        return view('admin.products', ['products' => $products]);
     }
 
         /**
@@ -42,7 +43,7 @@ class PropositionController extends Controller
         $products = Product::all();
         return view('admin.products-select', [
             'products' => $products,
-            'id' => $id
+            'id' => $id,
         ]);
     }
 
@@ -58,6 +59,8 @@ class PropositionController extends Controller
         // dd($request->id);
         $propositions_id = $request->id;
         $request = Req::find($id);
+        $request->status = 1;
+        $request->save();
         foreach($propositions_id as $id)
         {
             Proposition::create([
