@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proposition extends Model
 {
+    protected $fillable = [
+        'user_id', 'product_id'
+    ];
     /**
      * Get user that owns the propositions.
      */
