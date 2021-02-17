@@ -18,6 +18,9 @@ return [
     'paid_status' => [
         'paid', 'unpaid'
     ],
+    'readiness_status' => [
+        'panding', 'processing', 'done'
+    ],
     'errors' => [
         0 => 'Add photo to the product card!'
     ]
