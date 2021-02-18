@@ -12,7 +12,7 @@ class Request extends Model
      * @var array
      */
     protected $fillable = [
-        'email', 'phone', 'brand', 'price', 'year_from','year_to'
+        'user_id', 'email', 'phone', 'brand', 'price', 'year_from','year_to'
     ];
 
     /**
