@@ -28,7 +28,7 @@ class MainController extends Controller
     public function index()
     {
         $products = Product::get();
-        return view('home', ['products' => $products]);
+        return view('user-home', ['products' => $products]);
     }
 
     /**
