@@ -18,13 +18,12 @@ class PropositionController extends Controller
      **/
     public function show()
     {
-        $propositions = Proposition::where('id', Auth::id())->get();
-        $products = [];
-        foreach($propositions as $proposition)
-        {
-            $products[] = $proposition->product;
-        }
+        $propositions = Proposition::where('user_id', Auth::id())->get();
+        $statuses = config('car_import.proposition_status');
 
-        return view('profile', ['products' => $products]);
+        return view('propositions', [
+            'propositions' => $propositions,
+            'statuses' => $statuses
+        ]);
     }
 }
