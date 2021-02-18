@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/product/{id}', 'MainController@product')->name('product');
+Route::get('/request', 'RequestController@index')->name('request.show');
+Route::post('/request', 'RequestController@request')->name('request');
+Route::post('/request/{id}/change-status', 'RequestController@requestChangeStatus')->name('request.change.status');
 Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
 
 Auth::routes([
@@ -37,7 +40,7 @@ Route::get('/admin/products', 'Admin\ProductController@show')->name('admin.produ
 Route::get('/admin/requests', 'Admin\RequestController@show')->name('admin.requests.show');
 Route::get('/admin/propositions/{id}/select', 'Admin\PropositionController@select')->name('admin.proposition.select');
 Route::get('/admin/proposition/{id}/add', 'Admin\PropositionController@add')->name('admin.proposition.add');
-Route::get('/admin/propositions/for-user-{id}/show', 'Admin\PropositionController@show')->name('admin.proposition.show');
+Route::get('/admin/propositions/for-request-{id}/show', 'Admin\PropositionController@show')->name('admin.proposition.show');
 Route::get('/admin/proposition/{id}/delete', 'Admin\PropositionController@delete')->name('admin.proposition.delete');
 
 

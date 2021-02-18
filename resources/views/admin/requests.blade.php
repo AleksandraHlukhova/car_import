@@ -35,7 +35,7 @@
                     <td>{{$request->year_to}}</td>
                     <td><a href="{{ route('admin.proposition.select', ['id' => $request->id]) }}">Select proposition</a>
                     @if($request->status)
-                    <a href="{{ route('admin.proposition.show', ['id' => $request->user_id]) }}">See</a>
+                    <a href="{{ route('admin.proposition.show', ['id' => $request->id]) }}">See</a>
                     @endif
                     </td>
                     
