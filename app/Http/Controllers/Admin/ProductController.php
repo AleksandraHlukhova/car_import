@@ -71,13 +71,17 @@ class ProductController extends Controller
 
         if ($request->isMethod('post')) 
         {
-            if(!$request->hasFile('photo'))
+            if(!$request->hasFile('photo') && !$product->photo)
             {
                 return back()->with(
                     'error', config('car_import.errors')[0]
                 );
             }
-            $path = $request->file('photo')->store('images');
+            if($request->hasFile('photo'))
+            {
+                $path = $request->file('photo')->store('images');
+
+            }
 
             Product::where('id', $id)
             ->update([
@@ -87,7 +91,7 @@ class ProductController extends Controller
             "transmission" => $request['transmission'],
             "mileage" => $request['mileage'],
             "price" => $request['price'],
-            "photo" => $path
+            "photo" => isset($path) ?  $path : $product->photo
           ]);
 
             return redirect()->route('admin.products.show');
