@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Bookmark::class, function (Faker $faker) {
     return [
-        'user_id' => rand(1, config('car_import.seeder_qty')),
-        'product_id' => rand(1, config('car_import.seeder_qty')),
+        'user_id' => rand(config('car_import.seeder_qty'), 1),
+        'product_id' => rand(config('car_import.seeder_qty'), 1),
         'status' => 1,
     ];
 });

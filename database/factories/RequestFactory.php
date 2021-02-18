@@ -13,7 +13,7 @@ $factory->define(Request::class, function (Faker $faker) {
     $price = ['2000', '3500', '4000', '10000', '5000'];
     $year_from = rand(2000, 2020);
     return [
-        'user_id' => rand(1, config('car_import.seeder_qty')),
+        'user_id' => rand(config('car_import.seeder_qty'), 1),
         'brand' => array_rand($cars),
         'year_from' => $year_from,
         'year_to'=> rand($year_from, 2020),

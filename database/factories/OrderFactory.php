@@ -6,10 +6,12 @@ use App\Order;
 use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
-    $status = config('car_import.seeder_qty');
+    $paid_status = config('car_import.paid_status');
+    $readiness_status = config('car_import.readiness_status');
     return [
         'user_id' => rand(1, config('car_import.seeder_qty')),
         'product_id' => rand(1, config('car_import.seeder_qty')),
-        'status' => $status[array_rand($status)],
+        'paid_status' => $paid_status[array_rand($paid_status, 1)],
+        'readiness_status' => $readiness_status[array_rand($readiness_status, 1)],
     ];
 });
