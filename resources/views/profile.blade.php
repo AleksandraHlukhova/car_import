@@ -9,7 +9,7 @@
             <div class="row no-gutters">
                 @isset($products)
                 @forelse ($products as $product)
-                @include('partials.product')
+                @include('partials.product-card')
                 @empty
                 <p>No propositions</p>
                 @endforelse
