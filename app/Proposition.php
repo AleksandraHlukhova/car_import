@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposition extends Model
 {
     protected $fillable = [
-        'user_id', 'product_id'
+        'user_id', 'product_id', 'request_id'
     ];
     /**
      * Get user that owns the propositions.
@@ -31,5 +31,13 @@ class Proposition extends Model
     public function product()
     {
         return $this->hasOne('App\Product', 'id', 'product_id');
+    }
+
+    /**
+     * 
+     */
+    public function requestPropositionStatus()
+    {
+        return $this->belongsTo('App\RequestPropositionStatus');
     }
 }
