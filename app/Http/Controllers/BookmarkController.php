@@ -30,8 +30,6 @@ class BookmarkController extends Controller
                 ['user_id' => Auth::id(),
                  'product_id' => $id,
                  'status' => 1,
-                //  'created_at' => new DateTime(),
-                //  'updated_at' => new DateTime(),
                 ]
             );
         }   
