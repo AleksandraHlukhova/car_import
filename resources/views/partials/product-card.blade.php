@@ -8,8 +8,9 @@
             <p class="card-text">Price: {{$product->price}} $</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <a href="{{ route('product', $product->id) }}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                    <a href="{{ route('bookmark.add', $product->id) }}" type="button" class="btn btn-sm btn-outline-secondary">Add to bookmarks</a>
+                    <a href="{{ route('product', $product->id) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                    <a href="{{ route('bookmark.add', $product->id) }}" 
+                        class="btn btn-sm <?= ($product->bookmarks) ? 'btn-success' : 'btn-outline-secondary' ?>">Add to bookmarks</a>
                 </div>
                 <small class="text-muted">{{$product->created_at}}</small>
             </div>
