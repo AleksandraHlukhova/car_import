@@ -20,6 +20,9 @@ Route::post('/request', 'RequestController@request')->name('request');
 Route::post('/request/{id}/change-status', 'RequestController@requestChangeStatus')->name('request.change.status');
 Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
 
+Route::get('/product/{id}/add/to-cart', 'CartController@add')->name('cart.add');
+Route::get('/cart', 'CartController@show')->name('cart.show');
+
 Auth::routes([
     'reset' => false,
     'confirm' => false,
@@ -31,6 +34,7 @@ Route::get('/logout', 'ProfileController@logout')->name('logout');
 
 Route::get('/profile/propositions', 'PropositionController@show')->name('proposition.show');
 Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
+
 
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
