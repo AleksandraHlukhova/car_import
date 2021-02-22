@@ -41,12 +41,6 @@ class MainController extends Controller
                 }
             }
         }
-
-        // foreach($products as $product)
-        // {
-
-        // }
-        // dd(isset($products[0]->bookmarks));
         return view('user-home', ['products' => $products]);
     }
 
