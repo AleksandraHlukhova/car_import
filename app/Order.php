@@ -22,4 +22,12 @@ class Order extends Model
     {
         return $this->hasMany('App\Product', 'id');
     }
+
+    /**
+     * Get cart that own orders
+     */
+    public function cart()
+    {
+        return $this->belongsTo('App\Order');
+    }
 }
