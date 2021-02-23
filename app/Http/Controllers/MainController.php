@@ -27,7 +27,7 @@ class MainController extends Controller
      * @return type
      * @throws conditon
      **/
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::get();
         $bookmarks = Bookmark::get();
@@ -41,6 +41,9 @@ class MainController extends Controller
                 }
             }
         }
+
+        CartController::cartInit($request);
+
         return view('user-home', ['products' => $products]);
     }
 
