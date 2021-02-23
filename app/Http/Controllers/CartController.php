@@ -3,9 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class CartController extends Controller
 {
+
+    /**
+     * cart init
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public static function cartInit(Request $request)
+    {
+        if (!$request->session()->has('cart')) {
+            $request->session()->put("cart", []);
+        }
+    }
     /**
      * add to cart
      *
@@ -16,9 +31,6 @@ class CartController extends Controller
     public function add(Request $request, $id)
     {
 
-        if (!$request->session()->has('cart')) {
-            $request->session()->put("cart", []);
-        }
         $cart = $request->session()->get('cart');
 
         if(array_key_exists($id, $cart))
@@ -41,16 +53,21 @@ class CartController extends Controller
      **/
     public function show(Request $request)
     {
-
-        if (!$request->session()->has('cart')) 
+        $products = [];
+        // dd($cart, $products);
+        $cart = $request->session()->get('cart');
+dd($cart);
+        if (count($cart) === 0) 
         {
-            return view('cart');
+            return view('cart', ['products' => $products]);
         }
         else{
-            $cart = $request->session()->get('cart');
+            $products = Product::all();
 
         }
-        dd($cart);
+        dd($cart, $products);
         // return redirect()->route('index');
     }
+
+
 }

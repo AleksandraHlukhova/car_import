@@ -20,14 +20,7 @@ class Order extends Model
      */
     public function products()
     {
-        return $this->hasMany('App\Product', 'id');
+        return $this->hasMany('App\Product');
     }
 
-    /**
-     * Get cart that own orders
-     */
-    public function cart()
-    {
-        return $this->belongsTo('App\Order');
-    }
 }
