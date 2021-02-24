@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
+use App\Order;
 
 class CartController extends Controller
 {
@@ -30,18 +32,20 @@ class CartController extends Controller
      **/
     public function add(Request $request, $id)
     {
-
-        $cart = $request->session()->get('cart');
-
-        if(array_key_exists($id, $cart))
+        $orderId = \session('orderId');
+        if(is_null($orderId))
         {
-            $request->session()->put("cart", []);
+            $order = Order::create([
+                'user_id' => Auth::id()
+            ]);
+            session(['orderId' => $order->id]);
         }
         else
         {
-            $request->session()->put("cart", [$id => 1]);
+            $order = Order::find($orderId);
         }
-        return redirect()->route('index');
+        $order->products()->attach($id);
+        return redirect()->back();
     }
 
     /**
@@ -53,20 +57,13 @@ class CartController extends Controller
      **/
     public function show(Request $request)
     {
-        $products = [];
-        // dd($cart, $products);
-        $cart = $request->session()->get('cart');
-dd($cart);
-        if (count($cart) === 0) 
+        $orderId = \session('orderId');
+        if(is_null($orderId))
         {
-            return view('cart', ['products' => $products]);
+            return view('cart', ['oder' => $order]);
         }
-        else{
-            $products = Product::all();
-
-        }
-        dd($cart, $products);
-        // return redirect()->route('index');
+        $order = Order::find($orderId);
+        return view('cart', ['order' => $order]);
     }
 
 
