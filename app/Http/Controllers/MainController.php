@@ -42,8 +42,6 @@ class MainController extends Controller
             }
         }
 
-        CartController::cartInit($request);
-
         return view('user-home', ['products' => $products]);
     }
 
