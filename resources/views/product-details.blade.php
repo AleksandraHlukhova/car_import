@@ -25,7 +25,7 @@
                      
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="" class="btn btn-sm btn-outline-secondary">Buy</a>
+                                <a href="{{ route('cart.add', ['id'=> $product->id]) }}" class="btn btn-sm btn-outline-secondary">Buy</a>
                                 <a href="{{ route('bookmark.add', ['id'=> $product->id]) }}" type="button"
                                     class="btn btn-sm btn-outline-secondary">Add to bookmarks</a>
                             </div>
