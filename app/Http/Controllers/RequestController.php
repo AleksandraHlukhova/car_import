@@ -19,7 +19,20 @@ class RequestController extends Controller
      **/
     public function index()
     {
-        return view('request');
+        return view('request-form');
+    }
+
+    /**
+     * show request form
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function show()
+    {
+        $requests = Req::find(Auth::id());
+        return view('requests', ['requests' => $requests]);
     }
 
     /**
@@ -45,7 +58,8 @@ class RequestController extends Controller
             ]);
         }
 
-        return redirect()->route('index');
+        // return redirect()->route('index');
+        return view('request-form');
     }
 
     /**
