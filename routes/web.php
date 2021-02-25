@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/product/{id}', 'MainController@product')->name('product');
-Route::get('/request', 'RequestController@index')->name('request.show');
-Route::post('/request', 'RequestController@request')->name('request');
+// Route::get('/request-form', 'RequestController@index')->name('request.form');
+Route::get('/request', 'RequestController@show')->name('request.show');
+Route::get('/request-form', 'RequestController@request')->name('request');
+Route::post('/request-form', 'RequestController@request')->name('request');
 Route::post('/request/{id}/change-status', 'RequestController@requestChangeStatus')->name('request.change.status');
 Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
 
