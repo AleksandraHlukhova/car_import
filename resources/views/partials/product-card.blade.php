@@ -16,7 +16,7 @@
                         <i class='bx bxs-bookmark-alt-plus'></i>    
                     </a>
                     <a href="{{ route('cart.add', $product->id) }}" 
-                        class="btn btn-sm <?= (array_key_exists($product->id, session('cart'))) ? 'btn-success' : 'btn-outline-secondary' ?>">
+                        class="btn btn-sm btn-outline-secondary">
                         <i class='bx bxs-cart-add'></i>    
                     </a>
                 </div>
