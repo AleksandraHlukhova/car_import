@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Order;
+use App\Http\Controllers\Helpers\FlashMessage;
 
 class CartController extends Controller
 {
@@ -35,10 +36,18 @@ class CartController extends Controller
         $orderId = \session('orderId');
         if(is_null($orderId))
         {
-            $order = Order::create([
+            
+            if(Auth::check())
+            {
+                $order = Order::create([
                 'user_id' => Auth::id()
-            ]);
-            session(['orderId' => $order->id]);
+                ]);
+                session(['orderId' => $order->id]);
+            }
+            else{
+                FlashMessage::flashNotification('Please, sign in or sign up!!');
+                return redirect()->back();
+            }
         }
         else
         {
