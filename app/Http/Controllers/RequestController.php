@@ -6,6 +6,7 @@ use App\Proposition;
 use Illuminate\Http\Request;
 use App\Request as Req;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Helpers\FlashMessage;
 
 class RequestController extends Controller
 {
@@ -31,7 +32,7 @@ class RequestController extends Controller
      **/
     public function show()
     {
-        $requests = Req::find(Auth::id());
+        $requests = Req::where('user_id', Auth::id())->get();
         return view('requests', ['requests' => $requests]);
     }
 
@@ -56,10 +57,14 @@ class RequestController extends Controller
                 'year_to' => $request->year_to
 
             ]);
-        }
 
-        // return redirect()->route('index');
+            FlashMessage::flashNotification('Your request was sent =)');
+            return view('request-form');
+        }
         return view('request-form');
+
+
+        
     }
 
     /**

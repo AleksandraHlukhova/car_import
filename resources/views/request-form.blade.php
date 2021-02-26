@@ -4,6 +4,9 @@
 @section('content')
 <div class="container">
     <div class="col-12 mb-4">
+    @if(Session::has('flash-notification'))
+    @include('partials.notification.flash-notification')
+    @endif
     <h4 class="mt-4">Request form</h4>
         <div
             class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
