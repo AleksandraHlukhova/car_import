@@ -23,6 +23,7 @@ Route::post('/request/{id}/change-status', 'RequestController@requestChangeStatu
 Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
 
 Route::get('/product/{id}/add/to-cart', 'CartController@add')->name('cart.add');
+Route::get('/cart/product/{id}/delete', 'CartController@productDelete')->name('cart.product.delete');
 Route::get('/cart', 'CartController@show')->name('cart.show');
 
 Auth::routes([
