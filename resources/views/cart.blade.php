@@ -3,6 +3,7 @@
 
 @section('content')
 <div class="container">
+    @if(isset($order))
     @if(count($order->products) === 0)
     <p>Cart is empty</p>
     @else
@@ -14,12 +15,14 @@
                 <th scope="col">Model</th>
                 <th scope="col">Year</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         @php
         $i = 1;
         $sum = 0;
         @endphp
+        @if(isset($order))
         @foreach($order->products as $product)
         <tbody>
             <tr>
@@ -28,6 +31,8 @@
                 <td>{{$product->model}}</td>
                 <td>{{$product->year}}</td>
                 <td>{{$product->price}} USD</td>
+                <th><a href="{{ route('cart.product.delete', ['id' => $product->id]) }}">Delete</a></th>
+
             </tr>
         </tbody>
         @php
@@ -35,6 +40,7 @@
         $sum += $product->price;
         @endphp
         @endforeach
+        @endif
         <tr>
             <th scope="row">Total:</th>
             <td colspan="2"></td>
@@ -42,7 +48,11 @@
             <th>{{$sum}} USD</th>
         </tr>
     </table>
-    @endif
     <input type="submit" value="Buy">
+
+    @endif
+    @else
+    <p>Cart is empty</p>
+    @endif
 </div>
 @endsection
