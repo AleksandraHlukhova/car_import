@@ -22,8 +22,8 @@ class PropositionController extends Controller
     public function show($id)
     {
         $propositions = Proposition::where('request_id', $id)->get();
-        $user = User::find($id);
-
+        $userId =  $propositions[0]->user_id;
+        $user = User::find($userId);
         return view('admin.proposition', [
             'propositions' => $propositions,
             'user' => $user
