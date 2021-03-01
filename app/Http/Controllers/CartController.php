@@ -72,7 +72,7 @@ class CartController extends Controller
     {
         $orderId = \session('orderId');
         $order = Order::find($orderId);
-        /////del
+        $order->products()->detach($id);
         return view('cart', ['order' => $order]);
 
     }
