@@ -27,10 +27,10 @@ Auth::routes([
 ]);
 
 Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
-Route::get('/logout', 'ProfileController@logout')->name('logout');
+Route::get('/logout', 'ProfileController@logout')->middleware('auth')->name('logout');
 
-Route::get('/profile/propositions', 'PropositionController@show')->name('proposition.show');
-Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
+Route::get('/profile/propositions', 'PropositionController@show')->middleware('auth')->name('proposition.show');
+Route::get('/profile/bookmarks', 'BookmarkController@show')->middleware('auth')->name('bookmark.show');
 
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
