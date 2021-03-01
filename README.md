@@ -13,12 +13,10 @@ App has:
 3. Customer profile:
     1. Manager propositions for customer`s apply
     2. Products bookmarks
-    3. --!! Cart for oders (in processing)
+    3. Cart for oders
 4. --!! Admin (block in processing):
     1. --!! Auth
     2. Customer list
     3. Customer oders
-    4. --!! Paid orders
-    5. --!! Add new propositions for customer`s apply
-5. --!! Telegramm notification 
-6. --!! Price calculator
+    4. Products (add, update, delete)
+    5. Add new propositions for customer`s apply

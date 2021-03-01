@@ -14,6 +14,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('request.show') }}">
+                    <span data-feather="file"></span>
+                    Requests
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}">
                     <span data-feather="shopping-cart"></span>
                     Log out

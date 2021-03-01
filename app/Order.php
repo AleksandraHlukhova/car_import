@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $fillable = [
+        'user_id'
+    ];
 
     /**
      * Get user that owns the oders.
@@ -20,6 +23,7 @@ class Order extends Model
      */
     public function products()
     {
-        return $this->hasMany('App\Product', 'id');
+        return $this->belongsToMany('App\Product');
     }
+
 }

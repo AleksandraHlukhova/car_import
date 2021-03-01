@@ -13,7 +13,9 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-
+        @if (Session::has('flash-notification'))
+         @include('partials.notification.flash-notification')
+        @endif
             <div class="row">
                 @forelse($products as $product)
                 @include('partials.product-card')

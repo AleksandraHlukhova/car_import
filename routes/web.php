@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/product/{id}', 'MainController@product')->name('product');
-Route::get('/request', 'RequestController@index')->name('request.show');
-Route::post('/request', 'RequestController@request')->name('request');
+// Route::get('/request-form', 'RequestController@index')->name('request.form');
+Route::get('/request', 'RequestController@show')->name('request.show');
+Route::get('/request-form', 'RequestController@request')->name('request');
+Route::post('/request-form', 'RequestController@request')->name('request');
 Route::post('/request/{id}/change-status', 'RequestController@requestChangeStatus')->name('request.change.status');
 Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
+
+Route::get('/product/{id}/add/to-cart', 'CartController@add')->name('cart.add');
+Route::get('/cart/product/{id}/delete', 'CartController@productDelete')->name('cart.product.delete');
+Route::get('/cart', 'CartController@show')->name('cart.show');
 
 Auth::routes([
     'reset' => false,
@@ -31,6 +37,7 @@ Route::get('/logout', 'ProfileController@logout')->middleware('auth')->name('log
 
 Route::get('/profile/propositions', 'PropositionController@show')->middleware('auth')->name('proposition.show');
 Route::get('/profile/bookmarks', 'BookmarkController@show')->middleware('auth')->name('bookmark.show');
+
 
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
