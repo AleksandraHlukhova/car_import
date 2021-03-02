@@ -34,15 +34,15 @@ Route::group([
         Route::get('/cart/product/{id}/delete', 'CartController@productDelete')->name('cart.product.delete');
 
         //profile
-        Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
-        Route::get('/logout', 'ProfileController@logout')->middleware('auth')->name('logout');
+        Route::get('/profile', 'ProfileController@index')->name('profile');
+        Route::get('/logout', 'ProfileController@logout')->name('logout');
 
         //profile-propositions
         Route::get('/profile/propositions', 'PropositionController@show')->middleware('auth')->name('proposition.show');
         Route::post('/profile/proposition/{id}/change-status', 'PropositionController@propositionChangeStatus')->name('proposition.change.status');
         
         //profile-bookmarks
-        Route::get('/profile/bookmarks', 'BookmarkController@show')->middleware('auth')->name('bookmark.show');
+        Route::get('/profile/bookmarks', 'BookmarkController@show')->name('bookmark.show');
         
         //profile-requests
         Route::get('/profile/requests', 'RequestController@show')->name('request.show');
@@ -55,9 +55,14 @@ Auth::routes([
     'verify' => false,
 ]);
 
+Route::group([
+    'middleware' => 'auth',
+    'middleware' => 'is_admin'
+], function(){
 //admin
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
-
+Route::get('/admin/logout', 'Admin\AdminController@logout')->name('admin.logout');
+});
 //orders
 Route::get('/admin/orders', 'Admin\OrderController@show')->name('admin.orders.show');
 Route::post('/admin/order/{id}/paid-status/change', 'Admin\OrderController@edit')->name('admin.order.paid-status.edit');
