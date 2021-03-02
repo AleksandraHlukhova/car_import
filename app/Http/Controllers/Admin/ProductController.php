@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
-
+use App\Http\Requests\StoreProduct;
 class ProductController extends Controller
 {
     /**
@@ -35,8 +35,10 @@ class ProductController extends Controller
         
         if ($request->isMethod('post')) 
         {
+            // $validated = $request->validated();
+            // dd($validated);
             $path = $request->file('photo')->store('images');
-            // dd($path, $store);
+            
             Product::create([
             "brand" => $request['brand'],
             "model" => $request['model'],
@@ -71,6 +73,15 @@ class ProductController extends Controller
 
         if ($request->isMethod('post')) 
         {
+            $validated = $request->validated();
+            dd($validated);
+            // if(!$validatedData)
+            // {
+            //     return back()->with(
+            //         'error', config('car_import.errors')[]
+            //     );
+            // }
+
             if(!$request->hasFile('photo') && !$product->photo)
             {
                 return back()->with(
@@ -80,13 +91,13 @@ class ProductController extends Controller
             if($request->hasFile('photo'))
             {
                 $path = $request->file('photo')->store('images');
-
             }
 
             Product::where('id', $id)
             ->update([
             "brand" => $request['brand'],
             "model" => $request['model'],
+            "year" => $request['year'],
             "engine_type" => $request['engine_type'],
             "transmission" => $request['transmission'],
             "mileage" => $request['mileage'],
