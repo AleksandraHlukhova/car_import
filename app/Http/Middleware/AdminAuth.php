@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Helpers\FlashMessage;
 
 class AdminAuth
 {
@@ -15,7 +17,10 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        dd($request);
-        return $next($request);
+        if(!Auth::user()->is_admin())
+        {
+            FlashMessage::flashNotification('You have not rights');
+            return route('index');
+        }
     }
 }
