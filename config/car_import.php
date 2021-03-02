@@ -22,7 +22,8 @@ return [
         'panding', 'processing', 'done'
     ],
     'errors' => [
-        0 => 'Add photo to the product card!'
+        0 => 'Add photo to the product card!',
+        1 => 'This field can`t be empty'
     ]
 
 
