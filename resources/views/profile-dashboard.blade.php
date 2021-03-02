@@ -7,13 +7,7 @@
         @include('partials.side-nav')
         <div class="col-10">
             <div class="row no-gutters">
-                @isset($products)
-                @forelse ($products as $product)
-                @include('partials.product-card')
-                @empty
-                <p>No propositions</p>
-                @endforelse
-                @endisset
+                <p>hi!</p>
             </div>
         </div>
     </div>
