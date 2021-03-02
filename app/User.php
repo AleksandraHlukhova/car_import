@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Order');
     }
+
+    public function is_admin()
+    {
+        return $this->status === 0;
+    }
 }
