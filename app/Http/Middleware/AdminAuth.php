@@ -17,10 +17,17 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->is_admin())
+        if(Auth::check())
         {
+            if(!Auth::user()->is_admin())
+            {
             FlashMessage::flashNotification('You have not rights');
-            return route('index');
+            return redirect()->route('index');
+            }
+            return $next($request);
         }
+        FlashMessage::flashNotification('Please sign in or sign up!!!');
+        return redirect()->route('index');
+        
     }
 }
