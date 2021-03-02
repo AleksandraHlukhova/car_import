@@ -27,7 +27,7 @@
                 @forelse ($propositions as $proposition)
                 <tr class="<?= ($proposition->status === 'agreed') ? 'bg-success' : (($proposition->status === 'pending') ? 'bg-warning' : 'bg-danger')?>">
                 <td><img src="{{env('APP_URL') . $proposition->product->photo}}" alt=""
-                        style="width:350px; height:150px"></td>
+                        style="width:350px;"></td>
                 <td>{{$proposition->product->brand}}</td>
                 <td>{{$proposition->product->model}}</td>
                 <td>{{$proposition->product->year}}</td>

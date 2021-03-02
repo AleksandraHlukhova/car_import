@@ -22,6 +22,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'transmission' => $transmission[array_rand($transmission)],
         'mileage' => rand(2000, 200000),
         'price' => $price[array_rand($price)],
-        'photo' => 'https://picsum.photos/id/237/350/150'
+        'photo' => 'images/no-photo.png'
     ];
 });

@@ -28,7 +28,7 @@
                 @forelse ($products as $product)
                     <tr>
                         <td><input type="checkbox" name="id[]" id="" value="{{ $product->id }}"></td>
-                        <td><img src="{{env('APP_URL') . $product->photo}}" alt="" style="width:350px; height:150px"></td>
+                        <td><img src="{{env('APP_URL') . $product->photo}}" alt="" style="width:350px;"></td>
                         <td>{{$product->brand}}</td>
                         <td>{{$product->model}}</td>
                         <td>{{$product->year}}</td>

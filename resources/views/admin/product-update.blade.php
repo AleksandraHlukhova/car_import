@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <div class="col-auto d-none d-lg-block">
                             @if($product->photo)
-                            <img src="{{ env('APP_URL') . $product->photo}}" alt="" style="width:350px; height:150px">
+                            <img src="{{ env('APP_URL') . $product->photo}}" alt="" style="width:350px;">
                             <a href="{{ route('admin.photo.delete', ['id' => $product->id]) }}">Delete</a>
                             @endif
                             @if (\Session::has('error'))
