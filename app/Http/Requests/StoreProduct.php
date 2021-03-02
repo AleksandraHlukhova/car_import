@@ -11,10 +11,10 @@ class StoreProduct extends FormRequest
      *
      * @return bool
      */
-    // public function authorize()
-    // {
-    //     return false;
-    // }
+    public function authorize()
+    {
+        return true;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -29,7 +29,7 @@ class StoreProduct extends FormRequest
             'year' => 'required|max:4',
             'mileage' => 'required|max:10',
             'price' => 'required|max:10',
-            'photo' => 'required|mimes:jpg,bmp,png',
+            'photo' => 'mimes:jpg,bmp,png',
         ];
     }
 }

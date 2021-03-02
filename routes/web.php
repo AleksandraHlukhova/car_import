@@ -83,9 +83,9 @@ Route::get('/admin/proposition/{id}/delete', 'Admin\PropositionController@delete
 //products
 Route::get('/admin/products', 'Admin\ProductController@show')->name('admin.products.show');
 ///product crud operations
-Route::get('/admin/product/create', 'Admin\ProductController@create')->name('admin.product.create');
+Route::get('/admin/product/create', 'Admin\ProductController@createForm')->name('admin.product.create');
 Route::post('/admin/product/create', 'Admin\ProductController@create')->name('admin.product.create');
-Route::get('/admin/product/{id}/update', 'Admin\ProductController@update')->name('admin.product.update');
+Route::get('/admin/product/{id}/update', 'Admin\ProductController@updateForm')->name('admin.product.update');
 Route::post('/admin/product/{id}/update', 'Admin\ProductController@update')->name('admin.product.update');
 Route::get('/admin/product/{id}/delete', 'Admin\ProductController@delete')->name('admin.product.delete');
 Route::get('/admin/product/{id}/photo/delete', 'Admin\ProductController@photoDelete')->name('admin.photo.delete');

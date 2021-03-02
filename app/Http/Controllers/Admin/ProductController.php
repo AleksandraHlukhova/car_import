@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\StoreProduct;
+
 class ProductController extends Controller
 {
     /**
@@ -22,35 +23,54 @@ class ProductController extends Controller
     }
 
     /**
+     *show product form in admin
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function createForm(Request $request)
+    {
+        $engine_types = config('car_import.engine_type');
+        $transmission = config('car_import.transmission');
+        return view('admin.product-create', [
+            'engine_types' => $engine_types,
+            'transmission' => $transmission
+        ]);
+    }
+
+    /**
      *create new product in admin
      *
      * @param Type $var Description
      * @return type
      * @throws conditon
      **/
-    public function create(Request $request)
+    public function create(StoreProduct $request)
     {
+        $params = $request->all();
+        $path = $request->file('photo')->store('images');
+        $params['photo'] = $path;
+
+        Product::create($params);
+
+        return redirect()->route('admin.products.show');
+    }
+
+    /**
+     *show update product form in admin
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function updateForm(Request $request, $id)
+    {
+        $product = Product::find($id);
         $engine_types = config('car_import.engine_type');
         $transmission = config('car_import.transmission');
-        
-        if ($request->isMethod('post')) 
-        {
-            $path = $request->file('photo')->store('images');
-            
-            Product::create([
-            "brand" => $request['brand'],
-            "model" => $request['model'],
-            "year" => $request['year'],
-            "engine_type" => $request['engine_type'],
-            "transmission" => $request['transmission'],
-            "mileage" => $request['mileage'],
-            "price" => $request['price'],
-            "photo" => $path
-          ]);
-
-            return redirect()->route('admin.products.show');
-        }
-        return view('admin.product-create', [
+        return view('admin.product-update', [
+            'product' => $product,
             'engine_types' => $engine_types,
             'transmission' => $transmission
         ]);
@@ -63,44 +83,17 @@ class ProductController extends Controller
      * @return type
      * @throws conditon
      **/
-    public function update(Request $request, $id)
+    public function update(StoreProduct $request, $id)
     {
-        $product = Product::find($id);
-        $engine_types = config('car_import.engine_type');
-        $transmission = config('car_import.transmission');
-
-        if ($request->isMethod('post')) 
-        {
-            if(!$request->hasFile('photo') && !$product->photo)
-            {
-                return back()->with(
-                    'error', config('car_import.errors')[0]
-                );
-            }
-            if($request->hasFile('photo'))
-            {
-                $path = $request->file('photo')->store('images');
-            }
-
-            Product::where('id', $id)
-            ->update([
-            "brand" => $request['brand'],
-            "model" => $request['model'],
-            "year" => $request['year'],
-            "engine_type" => $request['engine_type'],
-            "transmission" => $request['transmission'],
-            "mileage" => $request['mileage'],
-            "price" => $request['price'],
-            "photo" => isset($path) ?  $path : $product->photo
-          ]);
-
-            return redirect()->route('admin.products.show');
+        $params = request()->except(['_token']);
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('images');
+            $params['photo'] = $path;
         }
-        return view('admin.product-update', [
-            'product' => $product,
-            'engine_types' => $engine_types,
-            'transmission' => $transmission
-        ]);
+        Product::where('id', $id)
+            ->update($params);
+
+        return redirect()->route('admin.products.show');
     }
 
     /**

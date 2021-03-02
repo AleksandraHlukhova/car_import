@@ -19,7 +19,7 @@ class AdminAuth
     {
         if(Auth::check())
         {
-            if(!Auth::user()->is_admin())
+            if(!Auth::user()->isAdmin())
             {
             FlashMessage::flashNotification('You have not rights');
             return redirect()->route('index');

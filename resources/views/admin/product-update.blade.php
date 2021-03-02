@@ -60,7 +60,7 @@
                         <input type="text" class="form-control" id="price" value="{{$product->price}}" name="price">
                     </div>
 
-                    <button type="submit" class="btn btn-primary" name="update">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
 
                 </form>
 

@@ -61,7 +61,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Order');
     }
 
-    public function is_admin()
+    public function isAdmin()
     {
         return $this->role === 0;
     }
