@@ -26,18 +26,10 @@ class Proposition extends Model
     }
 
     /**
-     * Get products.
+     * Get product
      */
     public function product()
     {
         return $this->hasOne('App\Product', 'id', 'product_id');
-    }
-
-    /**
-     * 
-     */
-    public function requestPropositionStatus()
-    {
-        return $this->belongsTo('App\RequestPropositionStatus');
     }
 }
