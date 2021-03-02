@@ -13,18 +13,41 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// home
 Route::get('/', 'MainController@index')->name('index');
+// poduct-details
 Route::get('/product/{id}', 'MainController@product')->name('product');
-// Route::get('/request-form', 'RequestController@index')->name('request.form');
-Route::get('/request', 'RequestController@show')->name('request.show');
-Route::get('/request-form', 'RequestController@request')->name('request');
-Route::post('/request-form', 'RequestController@request')->name('request');
-Route::post('/request/{id}/change-status', 'RequestController@requestChangeStatus')->name('request.change.status');
-Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
 
-Route::get('/product/{id}/add/to-cart', 'CartController@add')->name('cart.add');
-Route::get('/cart/product/{id}/delete', 'CartController@productDelete')->name('cart.product.delete');
-Route::get('/cart', 'CartController@show')->name('cart.show');
+Route::group([
+        'middleware' => 'auth'
+    ], function(){
+        //request form
+        Route::get('/request-form', 'RequestController@request')->name('request');
+        Route::post('/request-form', 'RequestController@request')->name('request');
+
+        //bookmarks
+        Route::get('/bookmark-add/{id}', 'BookmarkController@add')->name('bookmark.add');
+
+        //cart
+        Route::get('/cart', 'CartController@show')->name('cart.show');
+        Route::get('/product/{id}/add/to-cart', 'CartController@add')->name('cart.add');
+        Route::get('/cart/product/{id}/delete', 'CartController@productDelete')->name('cart.product.delete');
+
+        //profile
+        Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
+        Route::get('/logout', 'ProfileController@logout')->middleware('auth')->name('logout');
+
+        //profile-propositions
+        Route::get('/profile/propositions', 'PropositionController@show')->middleware('auth')->name('proposition.show');
+        Route::post('/profile/proposition/{id}/change-status', 'PropositionController@propositionChangeStatus')->name('proposition.change.status');
+        
+        //profile-bookmarks
+        Route::get('/profile/bookmarks', 'BookmarkController@show')->middleware('auth')->name('bookmark.show');
+        
+        //profile-requests
+        Route::get('/profile/requests', 'RequestController@show')->name('request.show');
+
+});
 
 Auth::routes([
     'reset' => false,
@@ -32,25 +55,28 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
-Route::get('/logout', 'ProfileController@logout')->middleware('auth')->name('logout');
-
-Route::get('/profile/propositions', 'PropositionController@show')->middleware('auth')->name('proposition.show');
-Route::get('/profile/bookmarks', 'BookmarkController@show')->middleware('auth')->name('bookmark.show');
-
-
-
+//admin
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin');
+
+//orders
 Route::get('/admin/orders', 'Admin\OrderController@show')->name('admin.orders.show');
-Route::get('/admin/customers', 'Admin\AdminController@customers')->name('admin.customers');
-Route::get('/admin/products', 'Admin\ProductController@show')->name('admin.products.show');
+Route::post('/admin/order/{id}/paid-status/change', 'Admin\OrderController@edit')->name('admin.order.paid-status.edit');
+Route::post('/admin/order/{id}/readiness-status/change', 'Admin\OrderController@edit')->name('admin.order.readiness-status.edit');
+
+//customers
+Route::get('/admin/customers', 'Admin\CustomerController@customers')->name('admin.customers');
+
+//requests
 Route::get('/admin/requests', 'Admin\RequestController@show')->name('admin.requests.show');
+
+//propositions
 Route::get('/admin/propositions/{id}/select', 'Admin\PropositionController@select')->name('admin.proposition.select');
 Route::get('/admin/proposition/{id}/add', 'Admin\PropositionController@add')->name('admin.proposition.add');
 Route::get('/admin/propositions/for-request-{id}/show', 'Admin\PropositionController@show')->name('admin.proposition.show');
 Route::get('/admin/proposition/{id}/delete', 'Admin\PropositionController@delete')->name('admin.proposition.delete');
 
-
+//products
+Route::get('/admin/products', 'Admin\ProductController@show')->name('admin.products.show');
 ///product crud operations
 Route::get('/admin/product/create', 'Admin\ProductController@create')->name('admin.product.create');
 Route::post('/admin/product/create', 'Admin\ProductController@create')->name('admin.product.create');
@@ -59,7 +85,5 @@ Route::post('/admin/product/{id}/update', 'Admin\ProductController@update')->nam
 Route::get('/admin/product/{id}/delete', 'Admin\ProductController@delete')->name('admin.product.delete');
 Route::get('/admin/product/{id}/photo/delete', 'Admin\ProductController@photoDelete')->name('admin.photo.delete');
 
-Route::post('/admin/order/{id}/paid-status/change', 'Admin\OrderController@edit')->name('admin.order.paid-status.edit');
-Route::post('/admin/order/{id}/readiness-status/change', 'Admin\OrderController@edit')->name('admin.order.readiness-status.edit');
-// Route::get('/admin-login/', 'Admin/AdminController@index')->middleware('admin')->name('admin.login');
+
 

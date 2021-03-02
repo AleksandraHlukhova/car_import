@@ -22,7 +22,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * show profile page
+     * logout
      *
      * @param Type $var Description
      * @return type

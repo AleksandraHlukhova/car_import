@@ -10,6 +10,25 @@ use App\Http\Controllers\Helpers\FlashMessage;
 
 class CartController extends Controller
 {
+
+    /**
+     * show cart
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function show(Request $request)
+    {
+        $orderId = \session('orderId');
+        if(is_null($orderId))
+        {
+            return view('cart');
+        }
+        $order = Order::find($orderId);
+        return view('cart', ['order' => $order]);
+    }
+
     /**
      * add to cart
      *
@@ -44,24 +63,6 @@ class CartController extends Controller
     }
 
     /**
-     * show cart
-     *
-     * @param Type $var Description
-     * @return type
-     * @throws conditon
-     **/
-    public function show(Request $request)
-    {
-        $orderId = \session('orderId');
-        if(is_null($orderId))
-        {
-            return view('cart');
-        }
-        $order = Order::find($orderId);
-        return view('cart', ['order' => $order]);
-    }
-
-    /**
      * delete product from cart
      *
      * @param Type $var Description
@@ -76,6 +77,5 @@ class CartController extends Controller
         return view('cart', ['order' => $order]);
 
     }
-
 
 }

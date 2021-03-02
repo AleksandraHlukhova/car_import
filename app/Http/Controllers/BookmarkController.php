@@ -8,6 +8,26 @@ use Illuminate\Support\Facades\DB;
 use App\Bookmark;
 class BookmarkController extends Controller
 {
+
+    /**
+     * show bookmarks
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function show()
+    {
+        $bookmarks = Bookmark::where('user_id', Auth::id())->get();
+        $products = [];
+        foreach($bookmarks as $bookmark)
+        {
+            $products[] = $bookmark->product;
+        }
+
+        return view('profile', ['products' => $products]);
+    }
+
     /**
      * add bookmarks
      *
@@ -45,25 +65,6 @@ class BookmarkController extends Controller
 
         return back(); 
         
-
     }
 
-    /**
-     * show bookmarks
-     *
-     * @param Type $var Description
-     * @return type
-     * @throws conditon
-     **/
-    public function show()
-    {
-        $bookmarks = Bookmark::where('user_id', Auth::id())->get();
-        $products = [];
-        foreach($bookmarks as $bookmark)
-        {
-            $products[] = $bookmark->product;
-        }
-
-        return view('profile', ['products' => $products]);
-    }
 }

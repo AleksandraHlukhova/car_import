@@ -31,7 +31,7 @@ class PropositionController extends Controller
     }
 
     /**
-     * propositions selct
+     * propositions select
      *
      * @param Type $var Description
      * @return type
@@ -55,7 +55,6 @@ class PropositionController extends Controller
      **/
     public function add(Request $request, $id)
     {
-        // dd($request->id);
         $propositions_id = $request->id;
         $request = Req::find($id);
         $request->status = 1;
@@ -73,7 +72,7 @@ class PropositionController extends Controller
     }
 
     /**
-     * propositions selct
+     * proposition delete
      *
      * @param Type $var Description
      * @return type
@@ -85,8 +84,6 @@ class PropositionController extends Controller
         Proposition::find($id)->delete();
 
         $requestHasPropositions = Proposition::where('request_id', $proposition->request_id)->get();
-
-        // dd(count($requestHasPropositions) === 0);
         
         if(count($requestHasPropositions) === 0)
         {

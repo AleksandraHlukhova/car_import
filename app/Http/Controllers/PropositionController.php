@@ -26,4 +26,20 @@ class PropositionController extends Controller
             'statuses' => $statuses
         ]);
     }
+
+    /**
+     *  change status
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function propositionChangeStatus(Request $request, $id)
+    {
+        $proposition = Proposition::find($id);
+        $proposition->status = $request->status;
+        $proposition->save();
+
+        return redirect()->route('proposition.show');
+    }
 }

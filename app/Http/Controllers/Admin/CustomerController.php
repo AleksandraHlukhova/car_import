@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 
-class AdminController extends Controller
+class CustomerController extends Controller
 {
     /**
-     * show admin home page
+     * show customers list
      *
      * @param Type $var Description
      * @return type
      * @throws conditon
      **/
-    public function index()
+    public function customers()
     {
-        return view('admin.admin');
+        $customers = User::all();
+        return view('admin.customers', ['customers' => $customers]);
     }
-
 }

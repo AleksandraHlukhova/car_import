@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('request.change.status', ['id' => $proposition->id]) }}" method="POST">
+                    <form action="{{ route('proposition.change.status', ['id' => $proposition->id]) }}" method="POST">
                         @csrf
                         <select name="status" id="status">
                             @foreach($statuses as $status)

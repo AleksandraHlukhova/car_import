@@ -57,7 +57,7 @@ class ProductController extends Controller
     }
 
     /**
-     * show all products in admin
+     * update product in admin
      *
      * @param Type $var Description
      * @return type
@@ -104,7 +104,7 @@ class ProductController extends Controller
     }
 
     /**
-     * show all products in admin
+     * delete product in admin
      *
      * @param Type $var Description
      * @return type
@@ -118,7 +118,7 @@ class ProductController extends Controller
     }
 
     /**
-     * gproduct photo delete
+     * product photo delete
      *
      * @param Type $var Description
      * @return type

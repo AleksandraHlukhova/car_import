@@ -12,19 +12,7 @@ class RequestController extends Controller
 {
 
     /**
-     * show request form
-     *
-     * @param Type $var Description
-     * @return type
-     * @throws conditon
-     **/
-    public function index()
-    {
-        return view('request-form');
-    }
-
-    /**
-     * show request form
+     * show requests in profile
      *
      * @param Type $var Description
      * @return type
@@ -37,7 +25,7 @@ class RequestController extends Controller
     }
 
     /**
-     *  form
+     *  show request form and processing
      *
      * @param Type $var Description
      * @return type
@@ -67,19 +55,4 @@ class RequestController extends Controller
         
     }
 
-    /**
-     *  change status
-     *
-     * @param Type $var Description
-     * @return type
-     * @throws conditon
-     **/
-    public function requestChangeStatus(Request $request, $id)
-    {
-        $proposition = Proposition::find($id);
-        $proposition->status = $request->status;
-        $proposition->save();
-
-        return redirect()->route('proposition.show');
-    }
 }
