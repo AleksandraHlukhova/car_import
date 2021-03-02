@@ -63,6 +63,6 @@ class User extends Authenticatable
 
     public function is_admin()
     {
-        return $this->status === 0;
+        return $this->role === 0;
     }
 }
