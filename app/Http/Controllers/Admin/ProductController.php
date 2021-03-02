@@ -35,8 +35,6 @@ class ProductController extends Controller
         
         if ($request->isMethod('post')) 
         {
-            // $validated = $request->validated();
-            // dd($validated);
             $path = $request->file('photo')->store('images');
             
             Product::create([
@@ -73,15 +71,6 @@ class ProductController extends Controller
 
         if ($request->isMethod('post')) 
         {
-            $validated = $request->validated();
-            dd($validated);
-            // if(!$validatedData)
-            // {
-            //     return back()->with(
-            //         'error', config('car_import.errors')[]
-            //     );
-            // }
-
             if(!$request->hasFile('photo') && !$product->photo)
             {
                 return back()->with(
