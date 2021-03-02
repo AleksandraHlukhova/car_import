@@ -41,7 +41,6 @@ class CartController extends Controller
         $orderId = \session('orderId');
         if(is_null($orderId))
         {
-            
             if(Auth::check())
             {
                 $order = Order::create([
