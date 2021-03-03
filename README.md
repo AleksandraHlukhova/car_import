@@ -14,8 +14,8 @@ App has:
     1. Manager propositions for customer`s apply
     2. Products bookmarks
     3. Cart for oders
-4. --!! Admin (block in processing):
-    1. --!! Auth
+4. Admin:
+    1. Auth
     2. Customer list
     3. Customer oders
     4. Products (add, update, delete)
